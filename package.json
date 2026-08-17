@@ -1,0 +1,38 @@
+{
+"name": "karate-academy-nit-hamirpur",
+"version": "1.0.0",
+"description": "Full-stack website for the Martial Arts Karate Academy, NIT Hamirpur",
+"private": true,
+"main": "server/server.js",
+
+"scripts": {
+"start": "node server/server.js",
+"dev": "nodemon server/server.js"
+},
+
+"keywords": [
+"karate",
+"martial-arts",
+"nit-hamirpur",
+"academy",
+"full-stack",
+"nodejs",
+"express",
+"postgresql"
+],
+
+"author": "Martial Arts Karate Academy, NIT Hamirpur",
+
+"license": "MIT",
+
+"dependencies": {
+"cors": "^2.8.5",
+"dotenv": "^17.2.2",
+"express": "^5.1.0",
+"pg": "^8.16.3"
+},
+
+"devDependencies": {
+"nodemon": "^3.1.10"
+}
+}
