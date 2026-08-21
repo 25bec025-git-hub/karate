@@ -1685,3 +1685,412 @@ window.addEventListener(
 
     }
 );
+
+/* =========================================================
+   GALLERY AUTO CAROUSEL + DOT NAVIGATION
+========================================================= */
+
+function initializeGalleryCarousel() {
+
+    const gallery =
+        document.querySelector(".gallery-grid");
+
+    const dotsContainer =
+        document.querySelector(".gallery-dots");
+
+
+    if (!gallery || !dotsContainer) {
+        return;
+    }
+
+
+    const slides =
+        gallery.querySelectorAll(".gallery-item");
+
+
+    if (slides.length <= 1) {
+        return;
+    }
+
+
+    /* -----------------------------------------------------
+       REDUCED MOTION
+    ----------------------------------------------------- */
+
+    const prefersReducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    /* -----------------------------------------------------
+       STATE
+    ----------------------------------------------------- */
+
+    let currentIndex = 0;
+
+    let intervalId = null;
+
+
+    /* -----------------------------------------------------
+       CREATE DOTS
+    ----------------------------------------------------- */
+
+    slides.forEach(
+        (slide, index) => {
+
+            const dot =
+                document.createElement("button");
+
+
+            dot.type =
+                "button";
+
+
+            dot.className =
+                "gallery-dot";
+
+
+            dot.setAttribute(
+                "aria-label",
+                `Go to gallery image ${index + 1}`
+            );
+
+
+            dot.setAttribute(
+                "aria-current",
+                index === 0
+                    ? "true"
+                    : "false"
+            );
+
+
+            if (index === 0) {
+
+                dot.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    goToSlide(index);
+
+                    restartAutoSlide();
+
+                }
+            );
+
+
+            dotsContainer.appendChild(
+                dot
+            );
+
+        }
+    );
+
+
+    const dots =
+        dotsContainer.querySelectorAll(
+            ".gallery-dot"
+        );
+
+
+    /* -----------------------------------------------------
+       UPDATE DOTS
+    ----------------------------------------------------- */
+
+    function updateDots() {
+
+        dots.forEach(
+            (dot, index) => {
+
+                const isActive =
+                    index === currentIndex;
+
+
+                dot.classList.toggle(
+                    "active",
+                    isActive
+                );
+
+
+                dot.setAttribute(
+                    "aria-current",
+                    isActive
+                        ? "true"
+                        : "false"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* -----------------------------------------------------
+       MOVE TO SLIDE
+    ----------------------------------------------------- */
+
+    function goToSlide(index) {
+
+        currentIndex =
+            (index + slides.length) %
+            slides.length;
+
+
+        gallery.scrollTo({
+
+            left:
+                gallery.clientWidth *
+                currentIndex,
+
+            behavior:
+                prefersReducedMotion
+                    ? "auto"
+                    : "smooth"
+
+        });
+
+
+        updateDots();
+
+    }
+
+
+    /* -----------------------------------------------------
+       DETECT MANUAL SCROLL
+    ----------------------------------------------------- */
+
+    let scrollTimeout = null;
+
+
+    gallery.addEventListener(
+        "scroll",
+        () => {
+
+            clearTimeout(
+                scrollTimeout
+            );
+
+
+            scrollTimeout =
+                setTimeout(
+                    () => {
+
+                        const slideWidth =
+                            gallery.clientWidth;
+
+
+                        if (
+                            slideWidth <= 0
+                        ) {
+                            return;
+                        }
+
+
+                        const detectedIndex =
+                            Math.round(
+                                gallery.scrollLeft /
+                                slideWidth
+                            );
+
+
+                        currentIndex =
+                            Math.max(
+                                0,
+                                Math.min(
+                                    detectedIndex,
+                                    slides.length - 1
+                                )
+                            );
+
+
+                        updateDots();
+
+                    },
+                    50
+                );
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       AUTO SLIDE
+    ----------------------------------------------------- */
+
+    function startAutoSlide() {
+
+        if (
+            prefersReducedMotion
+        ) {
+
+            return;
+
+        }
+
+
+        stopAutoSlide();
+
+
+        intervalId =
+            setInterval(
+                () => {
+
+                    goToSlide(
+                        currentIndex + 1
+                    );
+
+                },
+                2000
+            );
+
+    }
+
+
+    /* -----------------------------------------------------
+       STOP AUTO SLIDE
+    ----------------------------------------------------- */
+
+    function stopAutoSlide() {
+
+        if (
+            intervalId !== null
+        ) {
+
+            clearInterval(
+                intervalId
+            );
+
+            intervalId =
+                null;
+
+        }
+
+    }
+
+
+    /* -----------------------------------------------------
+       RESTART AUTO SLIDE
+    ----------------------------------------------------- */
+
+    function restartAutoSlide() {
+
+        stopAutoSlide();
+
+        startAutoSlide();
+
+    }
+
+
+    /* -----------------------------------------------------
+       PAUSE ON HOVER
+    ----------------------------------------------------- */
+
+    gallery.addEventListener(
+        "mouseenter",
+        stopAutoSlide
+    );
+
+
+    gallery.addEventListener(
+        "mouseleave",
+        startAutoSlide
+    );
+
+
+    /* -----------------------------------------------------
+       PAUSE ON TOUCH
+    ----------------------------------------------------- */
+
+    gallery.addEventListener(
+        "touchstart",
+        stopAutoSlide,
+        {
+            passive: true
+        }
+    );
+
+
+    gallery.addEventListener(
+        "touchend",
+        startAutoSlide,
+        {
+            passive: true
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       KEYBOARD SUPPORT
+    ----------------------------------------------------- */
+
+    gallery.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "ArrowRight"
+            ) {
+
+                goToSlide(
+                    currentIndex + 1
+                );
+
+                restartAutoSlide();
+
+            }
+
+
+            if (
+                event.key === "ArrowLeft"
+            ) {
+
+                goToSlide(
+                    currentIndex - 1
+                );
+
+                restartAutoSlide();
+
+            }
+
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       START
+    ----------------------------------------------------- */
+
+    updateDots();
+
+    startAutoSlide();
+
+}
+function initializeWebsite() {
+
+    initializeRevealAnimations();
+
+    initializeCounters();
+
+    initializeImageLoading();
+
+    initializeGallery();
+
+    initializeGalleryCarousel();
+
+    initializeContactForm();
+
+    initializeScrollTop();
+
+    initializeSmoothAnchors();
+
+}

@@ -2885,164 +2885,266 @@ img.loaded {
         var(--color-text-muted);
 }
 
-
 /* =========================================================
-   GALLERY VIEWER
+   14. GALLERY
 ========================================================= */
 
-.gallery-viewer {
+.gallery-section {
+    background:
+        var(--color-bg-secondary);
+
+    overflow:
+        hidden;
+}
+
+
+/* ---------------------------------------------------------
+   GALLERY VIEWPORT
+--------------------------------------------------------- */
+
+.gallery-grid {
+
+    display:
+        flex;
+
+    width:
+        100%;
+
+    overflow:
+        hidden;
+
     position:
-        fixed;
+        relative;
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-xl);
+
+    background:
+        var(--color-bg-primary);
+
+    box-shadow:
+        var(--shadow-lg);
+}
+
+
+/* ---------------------------------------------------------
+   EACH SLIDE
+--------------------------------------------------------- */
+
+.gallery-item {
+
+    position:
+        relative;
+
+    flex:
+        0 0 100%;
+
+    min-width:
+        100%;
+
+    height:
+        clamp(
+            320px,
+            55vw,
+            620px
+        );
+
+    overflow:
+        hidden;
+
+    border:
+        0;
+
+    border-radius:
+        0;
+
+    background:
+        var(--color-bg-tertiary);
+
+    cursor:
+        pointer;
+}
+
+
+/*
+    We are no longer using the old masonry
+    layout, therefore these classes should
+    not change slide width.
+*/
+
+.gallery-item-large,
+.gallery-item-wide {
+
+    grid-row:
+        auto;
+
+    grid-column:
+        auto;
+
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE
+--------------------------------------------------------- */
+
+.gallery-item img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform var(--transition-slow);
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE OVERLAY
+--------------------------------------------------------- */
+
+.gallery-item::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
 
     inset:
         0;
 
-    z-index:
-        var(--z-modal);
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        var(--space-6);
-
     background:
-        rgba(0, 0, 0, 0.92);
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(0, 0, 0, 0.45)
+        );
 
-    opacity:
-        0;
+    pointer-events:
+        none;
 
-    visibility:
-        hidden;
-
-    transition:
-        opacity var(--transition-normal),
-        visibility var(--transition-normal);
 }
 
 
-.gallery-viewer.open {
-    opacity:
-        1;
+/* ---------------------------------------------------------
+   HOVER
+--------------------------------------------------------- */
 
-    visibility:
-        visible;
+.gallery-item:hover img {
+
+    transform:
+        scale(1.03);
+
 }
 
 
-.gallery-viewer-content {
-    position:
-        relative;
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
 
-    width:
-        min(100%, 1100px);
+@media (max-width: 600px) {
 
-    max-height:
-        90vh;
+    .gallery-item {
+
+        height:
+            320px;
+
+    }
+
+}
+
+/* =========================================================
+   GALLERY DOT NAVIGATION
+========================================================= */
+
+.gallery-dots {
 
     display:
         flex;
 
+    justify-content:
+        center;
+
     align-items:
         center;
 
-    justify-content:
-        center;
+    gap:
+        var(--space-2);
+
+    margin-top:
+        var(--space-5);
 }
 
 
-.gallery-viewer-image {
-    width:
-        auto;
-
-    max-width:
-        100%;
-
-    max-height:
-        85vh;
-
-    object-fit:
-        contain;
-
-    border-radius:
-        var(--radius-lg);
-
-    box-shadow:
-        var(--shadow-xl);
-}
-
-
-.gallery-viewer-close {
-    position:
-        absolute;
-
-    top:
-        var(--space-6);
-
-    right:
-        var(--space-6);
-
-    z-index:
-        2;
+.gallery-dot {
 
     width:
-        46px;
+        9px;
 
     height:
-        46px;
+        9px;
 
-    display:
-        grid;
-
-    place-items:
-        center;
+    padding:
+        0;
 
     border:
-        1px solid
-        var(--color-border-light);
+        0;
 
     border-radius:
         var(--radius-full);
 
     background:
-        rgba(255, 255, 255, 0.08);
+        var(--color-text-muted);
 
-    color:
-        var(--color-white);
-
-    font-size:
-        1.8rem;
+    opacity:
+        0.45;
 
     cursor:
         pointer;
 
+    transform:
+        scale(1);
+
     transition:
+        width var(--transition-normal),
         background-color var(--transition-normal),
-        transform var(--transition-fast);
+        opacity var(--transition-normal),
+        transform var(--transition-normal);
 }
 
 
-.gallery-viewer-close:hover {
+.gallery-dot:hover {
+
+    opacity:
+        0.8;
+
+    transform:
+        scale(1.15);
+}
+
+
+.gallery-dot.active {
+
+    width:
+        28px;
+
     background:
         var(--color-primary);
 
-    color:
-        var(--color-black);
+    opacity:
+        1;
 
     transform:
-        rotate(90deg);
-}
-
-
-body.gallery-open {
-    overflow:
-        hidden;
+        scale(1);
 }
 
 
