@@ -5,6 +5,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 
+const { submitContact } = require("./controllers/contactController");
+
 dotenv.config();
 
 const app = express();
@@ -59,6 +61,16 @@ app.get(
         });
 
     }
+);
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+app.post(
+    "/api/contact",
+    submitContact
 );
 
 

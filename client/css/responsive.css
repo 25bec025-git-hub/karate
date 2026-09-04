@@ -1,1750 +1,365 @@
 /* =========================================================
-   MARTIAL ARTS KARATE ACADEMY
-   NIT HAMIRPUR
-
+   MARTIAL ARTS KARATE ACADEMY — NIT HAMIRPUR
    RESPONSIVE STYLESHEET
    ---------------------------------------------------------
    Breakpoints:
-
-   1400px → Large Desktop
-   1200px → Desktop
-   1050px → Small Desktop / Large Tablet
-   900px  → Tablet / Mobile Navigation
-   768px  → Tablet
-   600px  → Large Mobile
-   480px  → Small Mobile
+     xl  ≤ 1200px
+     lg  ≤ 992px
+     md  ≤ 768px
+     sm  ≤ 560px
 ========================================================= */
 
 
 /* =========================================================
-   01. LARGE DESKTOP
-   1400px AND BELOW
-========================================================= */
-
-@media (max-width: 1400px) {
-
-    :root {
-
-        --container-width:
-            1180px;
-
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
-    .hero-content {
-
-        gap:
-            var(--space-12);
-
-    }
-
-
-    .hero-title {
-
-        font-size:
-            clamp(
-                3rem,
-                6vw,
-                5.6rem
-            );
-
-    }
-
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
-
-    .about-content {
-
-        gap:
-            var(--space-12);
-
-    }
-
-}
-
-
-/* =========================================================
-   02. DESKTOP
-   1200px AND BELOW
+   XL — Wide Laptops (≤ 1200px)
 ========================================================= */
 
 @media (max-width: 1200px) {
 
     :root {
-
-        --container-width:
-            1100px;
-
-        --section-padding-y:
-            90px;
-
+        --section-padding-y: 80px;
     }
-
-
-    /* -----------------------------------------
-       GLOBAL
-    ----------------------------------------- */
-
-    .container {
-
-        width:
-            min(
-                calc(
-                    100% -
-                    (var(--container-padding) * 2)
-                ),
-                var(--container-width)
-            );
-
-    }
-
-
-    /* -----------------------------------------
-       NAVIGATION
-    ----------------------------------------- */
-
-    .nav-list {
-
-        gap:
-            var(--space-4);
-
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
 
     .hero-content {
-
-        gap:
-            var(--space-10);
-
+        gap: 3rem;
     }
-
-
-    .hero-title {
-
-        font-size:
-            clamp(
-                3rem,
-                6vw,
-                5rem
-            );
-
-    }
-
-
-    .hero-image-wrapper {
-
-        min-height:
-            480px;
-
-    }
-
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
-
-    .about-image-wrapper {
-
-        min-height:
-            460px;
-
-    }
-
-
-    /* -----------------------------------------
-       CADETS
-    ----------------------------------------- */
-
-    .cadet-content {
-
-        padding:
-            var(--space-5);
-
-    }
-
-
-    /* -----------------------------------------
-       ACTIVITIES
-    ----------------------------------------- */
-
-    .activity-card {
-
-        padding:
-            var(--space-6);
-
-    }
-
-
-    /* -----------------------------------------
-       FOOTER
-    ----------------------------------------- */
-
-    .footer-main {
-
-        gap:
-            var(--space-8);
-
-    }
-
-}
-
-
-/* =========================================================
-   03. SMALL DESKTOP / LARGE TABLET
-   1050px AND BELOW
-========================================================= */
-
-@media (max-width: 1050px) {
-
-    :root {
-
-        --container-width:
-            1000px;
-
-    }
-
-
-    /* -----------------------------------------
-       HEADER
-    ----------------------------------------- */
-
-    .navbar {
-
-        gap:
-            var(--space-5);
-
-    }
-
-
-    .nav-list {
-
-        gap:
-            var(--space-3);
-
-    }
-
-
-    .nav-link {
-
-        font-size:
-            var(--font-size-xs);
-
-    }
-
-
-    .header-cta {
-
-        padding-inline:
-            var(--space-4);
-
-        font-size:
-            var(--font-size-xs);
-
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
-    .hero-content {
-
-        gap:
-            var(--space-8);
-
-    }
-
-
-    .hero-title {
-
-        font-size:
-            clamp(
-                2.8rem,
-                6vw,
-                4.6rem
-            );
-
-    }
-
-
-    .hero-image-wrapper {
-
-        min-height:
-            440px;
-
-    }
-
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
-
-    .about-content {
-
-        gap:
-            var(--space-8);
-
-    }
-
-
-    /* -----------------------------------------
-       ACHIEVEMENTS
-    ----------------------------------------- */
 
     .achievements-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: repeat(2, 1fr);
     }
 
-
-    /* -----------------------------------------
-       ALUMNI
-    ----------------------------------------- */
-
-    .alumni-content {
-
-        gap:
-            var(--space-8);
-
+    .achievement-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
-
-    /* -----------------------------------------
-       CONTACT
-    ----------------------------------------- */
-
-    .contact-grid {
-
-        gap:
-            var(--space-8);
-
+    .stat-item + .stat-item::before {
+        display: none;
     }
 
-}
-
-
-/* =========================================================
-   04. TABLET / MOBILE NAVIGATION
-   900px AND BELOW
-========================================================= */
-
-@media (max-width: 900px) {
-
-    :root {
-
-        --container-padding:
-            1rem;
-
+    .stat-item {
+        padding: 1.5rem;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
     }
-
-
-    /* -----------------------------------------
-       HEADER
-    ----------------------------------------- */
-
-    .site-header {
-
-        height:
-            var(--header-height-mobile);
-
-    }
-
-
-    .navbar {
-
-        min-height:
-            var(--header-height-mobile);
-
-    }
-
-
-    .header-cta {
-
-        display:
-            none;
-
-    }
-
-
-    .menu-toggle {
-
-        display:
-            flex;
-
-        margin-left:
-            auto;
-
-    }
-
-
-    /*
-       Mobile Navigation Drawer
-    */
-
-    .nav-wrapper {
-
-        position:
-            fixed;
-
-        top:
-            var(--header-height-mobile);
-
-        left:
-            0;
-
-        width:
-            100%;
-
-        height:
-            calc(
-                100vh -
-                var(--header-height-mobile)
-            );
-
-        max-height:
-            calc(
-                100vh -
-                var(--header-height-mobile)
-            );
-
-        padding:
-            var(--space-8)
-            var(--container-padding);
-
-        overflow-y:
-            auto;
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-        gap:
-            var(--space-8);
-
-        background:
-            rgba(
-                10,
-                10,
-                10,
-                0.98
-            );
-
-        border-top:
-            1px solid
-            var(--color-border);
-
-        transform:
-            translateY(-110%);
-
-        opacity:
-            0;
-
-        visibility:
-            hidden;
-
-        transition:
-            transform var(--transition-smooth),
-            opacity var(--transition-normal),
-            visibility var(--transition-normal);
-    }
-
-
-    .nav-wrapper.open {
-
-        transform:
-            translateY(0);
-
-        opacity:
-            1;
-
-        visibility:
-            visible;
-
-    }
-
-
-    /* -----------------------------------------
-       MOBILE NAV LIST
-    ----------------------------------------- */
-
-    .nav-list {
-
-        width:
-            100%;
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-        gap:
-            0;
-
-    }
-
-
-    .nav-item {
-
-        width:
-            100%;
-
-        border-bottom:
-            1px solid
-            var(--color-border);
-
-    }
-
-
-    .nav-link {
-
-        width:
-            100%;
-
-        min-height:
-            56px;
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        padding:
-            var(--space-3)
-            0;
-
-        font-size:
-            var(--font-size-md);
-
-    }
-
-
-    .nav-link::after {
-
-        bottom:
-            0;
-
-        height:
-            2px;
-
-    }
-
-
-    /* -----------------------------------------
-       MOBILE CTA
-    ----------------------------------------- */
-
-    .mobile-cta {
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        min-height:
-            50px;
-
-        padding-inline:
-            var(--space-5);
-
-        border-radius:
-            var(--radius-md);
-
-        background:
-            var(--color-primary);
-
-        color:
-            var(--color-black);
-
-        font-size:
-            var(--font-size-sm);
-
-        font-weight:
-            var(--font-weight-semibold);
-
-        transition:
-            background-color var(--transition-normal),
-            transform var(--transition-fast);
-
-    }
-
-
-    .mobile-cta:hover {
-
-        background:
-            var(--color-primary-light);
-
-        transform:
-            translateY(-2px);
-
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
-    .hero-section {
-
-        min-height:
-            auto;
-
-        padding-top:
-            calc(
-                var(--header-height-mobile) +
-                var(--space-16)
-            );
-
-        padding-bottom:
-            var(--space-16);
-
-    }
-
-
-    .hero-content {
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            var(--space-10);
-
-    }
-
-
-    .hero-text {
-
-        max-width:
-            800px;
-
-        text-align:
-            center;
-
-        margin-inline:
-            auto;
-
-    }
-
-
-    .hero-description {
-
-        margin-inline:
-            auto;
-
-    }
-
-
-    .hero-actions {
-
-        justify-content:
-            center;
-
-    }
-
-
-    .hero-media {
-
-        max-width:
-            700px;
-
-        width:
-            100%;
-
-        margin-inline:
-            auto;
-
-    }
-
-
-    .hero-image-wrapper {
-
-        min-height:
-            500px;
-
-    }
-
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
-
-    .about-content {
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            var(--space-10);
-
-    }
-
-
-    .about-media {
-
-        max-width:
-            700px;
-
-        width:
-            100%;
-
-        margin-inline:
-            auto;
-
-    }
-
-
-    .about-text {
-
-        max-width:
-            800px;
-
-        margin-inline:
-            auto;
-
-    }
-
-
-    /* -----------------------------------------
-       CADETS
-    ----------------------------------------- */
-
-    .cadets-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-    }
-
-
-    /* -----------------------------------------
-       ACTIVITIES
-    ----------------------------------------- */
-
-    .activities-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-    }
-
-
-    /* -----------------------------------------
-       ALUMNI
-    ----------------------------------------- */
-
-    .alumni-content {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .alumni-image-wrapper {
-
-        position:
-            relative;
-
-        top:
-            auto;
-
-        min-height:
-            450px;
-
-        max-width:
-            700px;
-
-        margin-inline:
-            auto;
-
-    }
-
-
-    /* -----------------------------------------
-       EVENTS
-    ----------------------------------------- */
-
-    .events-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-    }
-
-
-    /* -----------------------------------------
-       GALLERY
-    ----------------------------------------- */
-
-    .gallery-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-    }
-
-
-    .gallery-item-large {
-
-        grid-row:
-            span 1;
-
-    }
-
-
-    .gallery-item-wide {
-
-        grid-column:
-            span 2;
-
-    }
-
-
-    /* -----------------------------------------
-       CONTACT
-    ----------------------------------------- */
-
-    .contact-grid {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .contact-info {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-    }
-
-
-    /* -----------------------------------------
-       FOOTER
-    ----------------------------------------- */
 
     .footer-main {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 2rem;
     }
-
 
     .footer-brand {
-
-        max-width:
-            100%;
-
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
     }
 
+    .footer-description {
+        max-width: 100%;
+    }
 }
 
 
 /* =========================================================
-   05. TABLET
-   768px AND BELOW
+   LG — Tablets Landscape / Small Laptops (≤ 992px)
+========================================================= */
+
+@media (max-width: 992px) {
+
+    :root {
+        --section-padding-y: 70px;
+    }
+
+    /* Header */
+    .menu-toggle { display: flex; }
+    .header-cta  { display: none; }
+
+    .nav-wrapper {
+        position: fixed;
+        inset: var(--header-height) 0 0 0;
+        background: rgba(8, 8, 8, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 2rem 1.5rem;
+        gap: 0;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        z-index: calc(var(--z-header) - 1);
+        border-top: 1px solid var(--color-border);
+    }
+
+    .nav-wrapper.open {
+        transform: translateX(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+    }
+
+    .nav-link {
+        padding: 1rem 0.5rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--color-border);
+        font-weight: 600;
+    }
+
+    .nav-link::after { display: none; }
+
+    .mobile-cta {
+        display: flex;
+        margin-top: 1.5rem;
+    }
+
+    /* Hero */
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-block: 4rem 6rem;
+        gap: 3rem;
+    }
+
+    .hero-eyebrow,
+    .hero-text { align-items: center; }
+
+    .hero-actions { justify-content: center; }
+
+    .hero-media { order: -1; }
+
+    .hero-image-wrapper {
+        max-width: 380px;
+    }
+
+    .hero-badge {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -24px;
+        white-space: nowrap;
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-media {
+        max-width: 400px;
+        margin-inline: auto;
+    }
+
+    /* Achievements */
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Activities */
+    .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Alumni */
+    .alumni-content {
+        grid-template-columns: 1fr;
+    }
+
+    .alumni-featured { display: none; }
+
+    /* Events */
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item-large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .gallery-item-wide {
+        grid-column: span 2;
+    }
+
+    /* Contact */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    /* Footer */
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   MD — Tablets Portrait (≤ 768px)
 ========================================================= */
 
 @media (max-width: 768px) {
 
     :root {
-
-        --section-padding-y:
-            var(--section-padding-y-small);
-
+        --section-padding-y: 56px;
+        --header-height: var(--header-height-mobile);
     }
-
-
-    /* -----------------------------------------
-       GLOBAL
-    ----------------------------------------- */
-
-    .section-header {
-
-        margin-bottom:
-            var(--space-10);
-
-    }
-
 
     .section-title {
-
-        font-size:
-            clamp(
-                2rem,
-                7vw,
-                2.8rem
-            );
-
+        font-size: clamp(1.7rem, 6vw, 2.4rem);
     }
 
-
-    .section-description {
-
-        font-size:
-            var(--font-size-md);
-
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
+    /* Hero */
     .hero-title {
-
-        font-size:
-            clamp(
-                2.8rem,
-                10vw,
-                4.2rem
-            );
-
+        font-size: clamp(2rem, 8vw, 3rem);
     }
-
-
-    .hero-image-wrapper {
-
-        min-height:
-            430px;
-
-    }
-
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
-
-    .about-image-wrapper {
-
-        min-height:
-            430px;
-
-    }
-
-
-    /* -----------------------------------------
-       CADETS
-    ----------------------------------------- */
-
-    .cadets-grid {
-
-        grid-template-columns:
-            1fr 1fr;
-
-    }
-
-
-    /* -----------------------------------------
-       ACHIEVEMENTS
-    ----------------------------------------- */
-
-    .achievement-stats {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
-
-    .stat-item {
-
-        border-right:
-            1px solid
-            var(--color-border);
-
-        border-bottom:
-            1px solid
-            var(--color-border);
-
-    }
-
-
-    .stat-item:nth-child(2n) {
-
-        border-right:
-            0;
-
-    }
-
-
-    .stat-item:nth-last-child(-n + 2) {
-
-        border-bottom:
-            0;
-
-    }
-
-
-    /* -----------------------------------------
-       ACTIVITIES
-    ----------------------------------------- */
-
-    .activity-card {
-
-        padding:
-            var(--space-6);
-
-    }
-
-
-    /* -----------------------------------------
-       ALUMNI
-    ----------------------------------------- */
-
-    .alumni-image-wrapper {
-
-        min-height:
-            400px;
-
-    }
-
-
-    /* -----------------------------------------
-       GALLERY
-    ----------------------------------------- */
-
-    .gallery-grid {
-
-        grid-auto-rows:
-            220px;
-
-    }
-
-
-    /* -----------------------------------------
-       CTA
-    ----------------------------------------- */
-
-    .cta-content {
-
-        padding:
-            var(--space-10)
-            var(--space-6);
-
-    }
-
-
-    /* -----------------------------------------
-       CONTACT
-    ----------------------------------------- */
-
-    .contact-info {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .contact-form {
-
-        padding:
-            var(--space-6);
-
-    }
-
-
-    /* -----------------------------------------
-       FOOTER
-    ----------------------------------------- */
-
-    .footer-bottom {
-
-        align-items:
-            flex-start;
-
-        flex-direction:
-            column;
-
-    }
-
-}
-
-
-/* =========================================================
-   06. LARGE MOBILE
-   600px AND BELOW
-========================================================= */
-
-@media (max-width: 600px) {
-
-    :root {
-
-        --container-padding:
-            0.9rem;
-
-    }
-
-
-    /* -----------------------------------------
-       HEADER
-    ----------------------------------------- */
-
-    .brand-title {
-
-        font-size:
-            var(--font-size-md);
-
-    }
-
-
-    .brand-subtitle {
-
-        font-size:
-            0.65rem;
-
-    }
-
-
-    .brand-mark {
-
-        width:
-            40px;
-
-        height:
-            40px;
-
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
-    .hero-section {
-
-        padding-top:
-            calc(
-                var(--header-height-mobile) +
-                var(--space-12)
-            );
-
-        padding-bottom:
-            var(--space-12);
-
-    }
-
-
-    .hero-title {
-
-        font-size:
-            clamp(
-                2.5rem,
-                12vw,
-                3.6rem
-            );
-
-    }
-
 
     .hero-description {
-
-        font-size:
-            var(--font-size-md);
-
+        font-size: 1rem;
     }
 
+    /* Belt strip */
+    .belt-strip { height: 8px; }
 
-    .hero-actions {
+    /* About highlights */
+    .about-highlights { gap: 0.75rem; }
 
-        width:
-            100%;
-
-        flex-direction:
-            column;
-
+    /* Cadets */
+    .cadet-card { width: 200px; }
+    .cadet-marquee-outer {
+        mask-image: linear-gradient(
+            to right,
+            transparent 0px, black 100px,
+            black calc(100% - 100px), transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0px, black 100px,
+            black calc(100% - 100px), transparent 100%
+        );
     }
 
-
-    .hero-actions .btn {
-
-        width:
-            100%;
-
-    }
-
-
-    .hero-image-wrapper {
-
-        min-height:
-            360px;
-
-    }
-
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
-
-    .about-image-wrapper {
-
-        min-height:
-            360px;
-
-    }
-
-
-    .about-highlight {
-
-        padding:
-            var(--space-4);
-
-    }
-
-
-    /* -----------------------------------------
-       CADETS
-    ----------------------------------------- */
-
-    .cadets-grid {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    /* -----------------------------------------
-       ACHIEVEMENTS
-    ----------------------------------------- */
-
-    .achievements-grid {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .achievement-stats {
-
-        grid-template-columns:
-            1fr 1fr;
-
-    }
-
-
-    .stat-number {
-
-        font-size:
-            2rem;
-
-    }
-
-
-    /* -----------------------------------------
-       ACTIVITIES
-    ----------------------------------------- */
-
+    /* Activities */
     .activities-grid {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
 
-
-    /* -----------------------------------------
-       ALUMNI
-    ----------------------------------------- */
-
-    .alumni-image-wrapper {
-
-        min-height:
-            340px;
-
-    }
-
-
-    .alumni-card {
-
-        flex-direction:
-            column;
-
-    }
-
-
-    .alumni-avatar {
-
-        width:
-            68px;
-
-        height:
-            68px;
-
-    }
-
-
-    /* -----------------------------------------
-       EVENTS
-    ----------------------------------------- */
-
+    /* Events */
     .events-grid {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
 
-
-    /* -----------------------------------------
-       GALLERY
-    ----------------------------------------- */
-
-    .gallery-grid {
-
-        grid-template-columns:
-            1fr;
-
-        grid-auto-rows:
-            260px;
-
-    }
-
-
-    .gallery-item-wide {
-
-        grid-column:
-            span 1;
-
-    }
-
-    .gallery-dots {
-
-    margin-top:
-        var(--space-4);
-
-}
-
-
-.gallery-dot {
-
-    width:
-        8px;
-
-    height:
-        8px;
-
-}
-
-
-.gallery-dot.active {
-
-    width:
-        24px;
-
-}
-
-
-    /* -----------------------------------------
-       CTA
-    ----------------------------------------- */
-
-    .cta-actions {
-
-        flex-direction:
-            column;
-
-    }
-
-
-    .cta-actions .btn {
-
-        width:
-            100%;
-
-    }
-
-
-    /* -----------------------------------------
-       FOOTER
-    ----------------------------------------- */
-
-    .footer-main {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .footer-social {
-
-        justify-content:
-            center;
-
-    }
-
-
-    .footer-legal {
-
-        gap:
-            var(--space-3);
-
-    }
-
-}
-
-
-/* =========================================================
-   07. SMALL MOBILE
-   480px AND BELOW
-========================================================= */
-
-@media (max-width: 480px) {
-
-    :root {
-
-        --container-padding:
-            0.8rem;
-
-        --space-16:
-            3.5rem;
-
-    }
-
-
-    /* -----------------------------------------
-       HEADER
-    ----------------------------------------- */
-
-    .brand-text {
-
-        max-width:
-            170px;
-
-    }
-
-
-    .brand-title {
-
-        font-size:
-            var(--font-size-sm);
-
-    }
-
-
-    .brand-subtitle {
-
-        font-size:
-            0.58rem;
-
-        letter-spacing:
-            0.08em;
-
-    }
-
-
-    .menu-toggle {
-
-        width:
-            42px;
-
-        height:
-            42px;
-
-    }
-
-
-    /* -----------------------------------------
-       SECTION
-    ----------------------------------------- */
-
-    .section-header {
-
-        margin-bottom:
-            var(--space-8);
-
-    }
-
-
-    .section-title {
-
-        font-size:
-            1.9rem;
-
-    }
-
-
-    .section-description {
-
-        font-size:
-            var(--font-size-sm);
-
-    }
-
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
-    .hero-title {
-
-        font-size:
-            2.5rem;
-
-    }
-
-
-    .hero-eyebrow {
-
-        font-size:
-            0.68rem;
-
-    }
-
-
-    .hero-image-wrapper {
-
-        min-height:
-            300px;
-
-        border-radius:
-            var(--radius-lg);
-
-    }
-
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
-
-    .about-image-wrapper {
-
-        min-height:
-            300px;
-
-        border-radius:
-            var(--radius-lg);
-
-    }
-
-
-    /* -----------------------------------------
-       ACHIEVEMENT STATS
-    ----------------------------------------- */
-
+    /* Achievement stats */
     .achievement-stats {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem;
     }
 
-
-    .stat-item,
-    .stat-item:nth-child(2n),
-    .stat-item:nth-last-child(-n + 2) {
-
-        border-right:
-            0;
-
-        border-bottom:
-            1px solid
-            var(--color-border);
-
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
     }
 
-
-    .stat-item:last-child {
-
-        border-bottom:
-            0;
-
+    .gallery-item-large,
+    .gallery-item-wide {
+        grid-column: 1 / -1;
     }
 
-
-    /* -----------------------------------------
-       ALUMNI
-    ----------------------------------------- */
-
-    .alumni-image-wrapper {
-
-        min-height:
-            280px;
-
+    /* CTA */
+    .cta-title {
+        font-size: clamp(1.8rem, 7vw, 2.8rem);
     }
 
-
-    /* -----------------------------------------
-       CONTACT
-    ----------------------------------------- */
-
-    .contact-form {
-
-        padding:
-            var(--space-5);
-
+    /* Footer */
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-block: 3rem;
     }
-
-
-    .contact-item {
-
-        padding:
-            var(--space-4);
-
-    }
-
-
-    /* -----------------------------------------
-       FOOTER
-    ----------------------------------------- */
 
     .footer-bottom {
-
-        text-align:
-            center;
-
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
     }
 
-    .footer-legal {
+    .footer-legal { gap: 1.5rem; }
 
-        width:
-            100%;
-
-        justify-content:
-            center;
-
+    /* Back to top */
+    .back-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
     }
-
 }
 
 
 /* =========================================================
-   08. VERY SMALL DEVICES
-   360px AND BELOW
+   SM — Mobile (≤ 560px)
 ========================================================= */
 
-@media (max-width: 360px) {
+@media (max-width: 560px) {
 
-    .brand-subtitle {
-
-        display:
-            none;
-
+    :root {
+        --container-padding: 1rem;
+        --section-padding-y: 48px;
     }
 
+    /* Header brand */
+    .brand-text .brand-subtitle { display: none; }
 
-    .brand-title {
+    /* Hero */
+    .hero-content { padding-block: 3rem 5rem; }
 
-        font-size:
-            var(--font-size-xs);
+    .hero-image-wrapper { max-width: 300px; }
 
+    .hero-badge { display: none; }
+
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn { width: 100%; }
+
+    /* Achievement stats */
+    .achievement-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 1.5rem 1rem;
     }
 
-
-    .brand-mark {
-
-        width:
-            36px;
-
-        height:
-            36px;
-
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    .menu-toggle {
-
-        width:
-            40px;
-
-        height:
-            40px;
-
+    .gallery-item-large,
+    .gallery-item-wide {
+        grid-column: 1;
     }
 
+    /* Contact form */
+    .contact-form { padding: 1.5rem; }
 
-    .hero-title {
+    /* Cadet cards */
+    .cadet-card { width: 180px; }
+    .cadet-group-title { font-size: 0.95rem; }
 
-        font-size:
-            2.2rem;
-
-    }
-
-
-    .hero-description {
-
-        font-size:
-            var(--font-size-sm);
-
-    }
-
-
-    .btn {
-
-        padding-inline:
-            var(--space-4);
-
-    }
-
-}
-
-
-/* =========================================================
-   09. LANDSCAPE MOBILE
-========================================================= */
-
-@media (max-height: 600px) and (orientation: landscape) {
-
-    .hero-section {
-
-        min-height:
-            auto;
-
-        padding-top:
-            calc(
-                var(--header-height-mobile) +
-                var(--space-8)
-            );
-
-        padding-bottom:
-            var(--space-8);
-
-    }
-
-
-    .hero-image-wrapper {
-
-        min-height:
-            300px;
-
-    }
-
-
-    .nav-wrapper {
-
-        padding-block:
-            var(--space-5);
-
-    }
-
+    /* Footer social */
+    .footer-social { gap: 0.75rem; }
 }
