@@ -498,6 +498,7 @@ button { border: 0; cursor: pointer; }
     min-height: var(--header-height);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-8);
 }
 
@@ -1139,26 +1140,10 @@ button { border: 0; cursor: pointer; }
     color: var(--color-primary);
 }
 
-/* Marquee track */
+/* Cadet group track wrapper */
 .cadet-marquee-outer {
     position: relative;
     overflow: hidden;
-    /* Fade zone = 260px (wider than one card = 240px) so
-       no partial card is ever visible at the left edge    */
-    mask-image: linear-gradient(
-        to right,
-        transparent 0px,
-        black 260px,
-        black calc(100% - 260px),
-        transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0px,
-        black 260px,
-        black calc(100% - 260px),
-        transparent 100%
-    );
 }
 
 /* Pause on hover */
@@ -1166,6 +1151,7 @@ button { border: 0; cursor: pointer; }
     animation-play-state: paused;
 }
 
+/* Scrolling track */
 .cadet-marquee-track {
     display: flex;
     gap: var(--space-6);
@@ -1188,6 +1174,25 @@ button { border: 0; cursor: pointer; }
 @keyframes marquee-rtl {
     from { transform: translateX(-50%); }
     to   { transform: translateX(0); }
+}
+
+/* Leadership group (Group 1) — static centred layout, no scroll */
+.cadet-group--leadership .cadet-marquee-outer {
+    overflow: visible;
+}
+
+.cadet-group--leadership .cadet-marquee-track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-6);
+    width: 100%;
+    animation: none !important;
+}
+
+/* Hide JS-cloned duplicates in the leadership group only */
+.cadet-group--leadership .cadet-marquee-track .cadet-card:nth-child(n+3) {
+    display: none;
 }
 
 /* Cadet Card */

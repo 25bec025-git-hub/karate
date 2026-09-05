@@ -397,8 +397,7 @@ function initSmoothAnchors() {
 
 /* =========================================================
    09. MARQUEE DUPLICATION
-   Doubles each marquee track's content so the animation
-   loops seamlessly even with few cards.
+   Clones each track once so the animation loops seamlessly.
 ========================================================= */
 
 function initMarquees() {
@@ -406,8 +405,7 @@ function initMarquees() {
         /*
           Clone exactly once so the track has 2 identical sets.
           The CSS animation translates from 0 to -50% and loops —
-          this creates a seamless infinite scroll with no visible
-          repeating of the same person.
+          this creates a seamless infinite scroll.
         */
         const children = Array.from(track.children);
         children.forEach(child => {
